@@ -8,9 +8,6 @@ function persona(nombre, edad, cedula) {
     }
 }
 
-// let mipersona = new persona('Al', 18, 123456789)
-// console.log(mipersona.mostrar())
-
 // ex 2
 function cuenta(titular, cantidad) {
     this.titular = titular
@@ -25,11 +22,6 @@ function cuenta(titular, cantidad) {
         this.cantidad -= monto
     }
 }
-
-// let micuenta = new cuenta("blaze it", 420)
-// console.log(micuenta.mostrar())
-// micuenta.retirar(69)
-// console.log(micuenta.mostrar())
 
 // ex 3
 
@@ -57,7 +49,7 @@ function formulas() {
     }
 
     this.primos = function (num) {
-        if (num == 1)
+        if (num == 1) {
             for (let i = 0; i < num; i++) {
                 isPrime = true
                 for (let j = 2; j < i; j++) {
@@ -69,13 +61,10 @@ function formulas() {
                 if (isPrime)
                     console.log(i + " is Prime")
             }
+        }
+
     }
 }
-
-let misformulas = new formulas()
-console.log(misformulas.fibonacci(7))
-console.log(misformulas.operacion_modulo(10, 3))
-console.log(1 < 2)
 
 // ex 4
 
@@ -127,7 +116,7 @@ function contrasena(longitud, contrasena) {
         // se asume que el atributo 'longitud' concuerda con
         // la longitud real de la contraseña
         var mayus = minus = nums = 0
-        for (var i = 0; i < longitud-1; i++){
+        for (var i = 0; i < longitud - 1; i++) {
             var letra = this.contrasena[i]
 
             if (letra >= 0 && letra <= 9)
@@ -137,15 +126,15 @@ function contrasena(longitud, contrasena) {
             else if (letra == letra.toLowerCase())
                 minus++
         }
-        if (mayus >= 2 
+        if (mayus >= 2
             && minus >= 1
             && nums >= 2)
             return true
-        else 
+        else
             return false
     }
 
-    this.generarPassword = function(){
+    this.generarPassword = function () {
         this.contrasena = []
         var randchar
         for (let i = 0; i < this.length; i++) {
@@ -154,11 +143,11 @@ function contrasena(longitud, contrasena) {
         }
     }
 
-    this.seguridadPassword = function(){
+    this.seguridadPassword = function () {
         // se asume que el atributo 'longitud' concuerda con
         // la longitud real de la contraseña
         var mayus = minus = nums = 0
-        for (var i = 0; i < longitud-1; i++){
+        for (var i = 0; i < longitud - 1; i++) {
             var letra = this.contrasena[i]
             if (letra >= 0 && letra <= 9)
                 nums++
@@ -167,48 +156,48 @@ function contrasena(longitud, contrasena) {
             else if (letra == letra.toLowerCase())
                 minus++
         }
-        
-        if(longitud >= 14 && (minus + mayus) >=1 && nums >=1)
+
+        if (longitud >= 14 && (minus + mayus) >= 1 && nums >= 1)
             return "Seguridad de contraseña fuerte"
-        else if(longitud >= 7 && (minus + mayus) >=1 && nums >=1)
+        else if (longitud >= 7 && (minus + mayus) >= 1 && nums >= 1)
             return "Seguridad de contraseña media"
-        else if(longitud >= 1 && (minus + mayus) >=1 && nums >=1)
+        else if (longitud >= 1 && (minus + mayus) >= 1 && nums >= 1)
             return "Seguridad de contraseña débil"
-        else 
+        else
             return "Seguridad de contraseña insuficiente"
     }
 }
 
 // ex 6
 
-function contador(valor){
+function contador(valor) {
     this.valor = valor
     this.ultimoComando = ""
     this.ultimaActualizacion = valor
-    this.reset = function(){
+    this.reset = function () {
         this.valor = 0
         this.ultimoComando = "reset"
     }
-    this.inc = function(){
+    this.inc = function () {
         this.valor++
         this.ultimoComando = "incremento"
     }
-    this.dec = function(){
+    this.dec = function () {
         this.valor--
         this.ultimoComando = "decremento"
     }
-    this.valorActual = function(){
+    this.valorActual = function () {
         return this.valor
     }
-    this.valorActual = function(valor){
+    this.valorActual = function (valor) {
         this.valor = valor
         this.ultimoComando = "actualizacion"
         this.ultimaActualizacion = valor
     }
 
     // ex 7
-    this.ultimoComando = function(){
-        switch(this.valorActual){
+    this.ultimoComando = function () {
+        switch (this.valorActual) {
             case "reset":
                 this.reset()
                 break
@@ -224,5 +213,106 @@ function contador(valor){
         }
     }
 }
+
+// ex 8
+
+function chimuela() {
+    this.comida = 0
+    this.energia = 0
+
+    this.comer = function (gramos) {
+        this.comida += gramos
+        this.energia += gramos * 4
+    }
+
+    this.volar = function (kilometros) {
+        if (energia >= (kilometros + 20)) {
+            energia -= (kilometros + 20)
+            this.comida -= Math.floor((kilometros + 20) / 4)
+        }
+        else
+            console.log("energia insuficiente")
+    }
+
+    this.energia = function () {
+        console.log(`energia: ${this.energia}`)
+    }
+
+    // ex 9
+    this.estaDebil = function () {
+        if (this.energia < 50)
+            return true
+        else
+            return false
+    }
+    this.estaFeliz = function () {
+        if (this.energia >= 500 && this.energia <= 1000)
+            return true
+        else
+            return false
+    }
+    this.quiereVolar = function () {
+        if (this.energia >= 300 && this.energia <= 400)
+            return (this.energia / 5)
+        else
+            return (this.energia / 5) + 10
+
+    }
+
+}
+
+// ex 10 
+
+function calculadora(numero) {
+    this.memoria = numero
+    this.cargarNumero = function (numero) {
+        this.memoria = numero
+    }
+    this.sumar = function (num) {
+        return num + this.memoria
+    }
+    this.restar = function (num) {
+        return num - this.memoria
+    }
+    this.multiplicar = function (num) {
+        return num * this.memoria
+    }
+    this.valorActual = function () {
+        return this.memoria
+    }
+}
+
+// ex 11
+
+function libro(titulo, numero, prestados) {
+    this.titulo = titulo
+    this.numero = numero
+    this.prestados = prestados
+    this.prestamo = function () {
+        if (this.numero >= 1) {
+            this.numero--
+            this.prestados++
+            return true
+        }
+        else
+            console.log()
+            return false
+    }
+    this.devolucion=function(){
+        if (this.prestados >= 1){
+            this.prestados--
+            this.numero++
+            return true
+        } else {
+            console.log("no se han prestado libros")
+            return false
+        }
+    }
+    this.toString= function(){
+        return `titulo:${this.titulo}; número:${this.numero}; prestados:${this.prestados}}`
+    }
+}
+
+// ex 12
 
 
