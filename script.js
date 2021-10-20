@@ -296,10 +296,10 @@ function libro(titulo, numero, prestados) {
         }
         else
             console.log()
-            return false
+        return false
     }
-    this.devolucion=function(){
-        if (this.prestados >= 1){
+    this.devolucion = function () {
+        if (this.prestados >= 1) {
             this.prestados--
             this.numero++
             return true
@@ -308,11 +308,55 @@ function libro(titulo, numero, prestados) {
             return false
         }
     }
-    this.toString= function(){
+    this.toString = function () {
         return `titulo:${this.titulo}; número:${this.numero}; prestados:${this.prestados}}`
     }
 }
 
 // ex 12
 
+function enterprise() {
+    this.potencia = 50 //100
+    this.coraza = 5 //20   
 
+    this.encontrarPilaAtomica = function () {
+        if ((this.potencia + 25) > 100)
+            this.potencia = 100
+        else
+            this.potencia += 25
+    }
+
+    this.encontrarEscudo = function () {
+        if ((this.coraza + 10) > 20)
+            this.coraza = 20
+        else
+            this.coraza += 10
+    }
+
+    this.recibirAtaque = function (fuerza) {
+        this.coraza -= fuerza
+        if (this.coraza < 0) {
+            this.potencia += this.coraza
+            if (this.potencia < 0)
+                this.potencia = 0
+            this.coraza = 0
+        }
+    }
+
+    // ex 13
+    this.fortalezaDefensiva = function () {
+        return this.potencia + this.coraza
+    }
+    this.necesitaFortalecerse = function () {
+        if (this.coraza = 0 && this.potencia < 20)
+            return true
+        else
+            return false
+    }
+    this.fortalezaOfensiva = function(){
+        if (this.potencia < 20)
+            return 0
+        else 
+            return (this.potencia - 20) / 2
+    }
+}
